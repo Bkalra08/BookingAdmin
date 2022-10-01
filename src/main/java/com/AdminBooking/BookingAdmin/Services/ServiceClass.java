@@ -1,5 +1,7 @@
 package com.AdminBooking.BookingAdmin.Services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +37,12 @@ public class ServiceClass implements ClassInterface {
 		repo.deleteById(PlaceId);
 		
 	}
+
+	@Override
+	public List<AdminDetails> getAllAdminDetails() {
+		return repo.findAll();
+	}
+
 
 
 	

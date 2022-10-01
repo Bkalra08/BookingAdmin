@@ -1,5 +1,7 @@
 package com.AdminBooking.BookingAdmin.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +37,10 @@ public class Controller {
 		services.DeleteAdminDetails(services.findById(PlaceId).getPlaceId());
 		return new ResponseEntity("DATA DELETED SUCCESSFULLY" , HttpStatus.OK);
 	}
-	
+	@GetMapping("/GetAllAdminDetails")
+	public List<AdminDetails>GetallDetails(){
+		return this.services.getAllAdminDetails();
+	}
 	
 	
 	
