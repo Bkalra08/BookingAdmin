@@ -18,9 +18,14 @@ public class AdminDetails {
 	@Id
 	private int placeId;
 	private String Address;
+	private String fnameofowner;
+	private String lnameofowner;
+	private String Email;
+	private String Password;
 	private int BikeSpace;
 	private int CarSpace;
 	private String ParkingManager;
 	private String ParkingPhNo;
+	private String ParkingLot;
 
 }
