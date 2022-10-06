@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class AdminDetails {
 	
 	@Id
-	private int placeId;
+	private long placeId;
 	private String Address;
 	private String fnameofowner;
 	private String lnameofowner;

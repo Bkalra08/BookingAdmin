@@ -31,10 +31,10 @@ public class Controller {
 	}
 	@GetMapping("/GetAdminDetails/{PlaceId}")
 	public AdminDetails getAdminDetails(@PathVariable String PlaceId) {
-		return this.services.getAdminDetails(Integer.parseInt(PlaceId));
+		return this.services.getAdminDetails(Long.parseLong(PlaceId));
 	}
 	@DeleteMapping("/DeleteAdminDetails/{PlaceId}")
-	public ResponseEntity<?>DeleteData(@PathVariable int PlaceId){
+	public ResponseEntity<?>DeleteData(@PathVariable long PlaceId){
 		services.DeleteAdminDetails(services.findById(PlaceId).getPlaceId());
 		return new ResponseEntity("DATA DELETED SUCCESSFULLY" , HttpStatus.OK);
 	}
@@ -45,13 +45,13 @@ public class Controller {
 	
 //	@RequestMapping(value = "/UpdateBike/{PlaceId}/BPlacesLeft/{BikeSpace}" , method = RequestMethod.PUT , produces = {""})
 	@PutMapping("/UpdateBike/{PlaceId}")
-	public ResponseEntity<?>updateBike(@PathVariable int PlaceId, @RequestBody AdminDetails Adetails){
+	public ResponseEntity<?>updateBike(@PathVariable long PlaceId, @RequestBody AdminDetails Adetails){
 		
 		services.updateBike(PlaceId , Adetails);
 		return new ResponseEntity<>("Bike Space Updated " + PlaceId +" ",HttpStatus.OK);
 	}
 	@PutMapping("/UpdateCar/{PlaceId}")
-	public ResponseEntity<?>updateCar(@PathVariable int PlaceId, @RequestBody AdminDetails Addetails){
+	public ResponseEntity<?>updateCar(@PathVariable long PlaceId, @RequestBody AdminDetails Addetails){
 		
 		services.updateCar(PlaceId , Addetails);
 		return new ResponseEntity<>("Car Space Updated " + PlaceId +" ",HttpStatus.OK);

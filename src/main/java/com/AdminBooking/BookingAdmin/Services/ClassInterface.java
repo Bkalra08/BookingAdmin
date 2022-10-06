@@ -6,11 +6,11 @@ import com.AdminBooking.BookingAdmin.Entity.AdminDetails;
 
 public interface ClassInterface {
 	public AdminDetails AddAdminData(AdminDetails details);
-	public AdminDetails getAdminDetails(int PlaceId);
-	public AdminDetails findById(int PlaceId);
-	void DeleteAdminDetails (int PlaceId);
+	public AdminDetails getAdminDetails(long PlaceId);
+	public AdminDetails findById(long PlaceId);
+	void DeleteAdminDetails (long PlaceId);
 	public List<AdminDetails> getAllAdminDetails();
-	public void updateBike(int PlaceId , AdminDetails Adetails);
-	public void updateCar(int PlaceId , AdminDetails Addetails);
+	public void updateBike(long PlaceId , AdminDetails Adetails);
+	public void updateCar(long PlaceId , AdminDetails Addetails);
 
 }

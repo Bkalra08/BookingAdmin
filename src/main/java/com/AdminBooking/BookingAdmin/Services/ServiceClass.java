@@ -24,17 +24,17 @@ public class ServiceClass implements ClassInterface {
 	}
 
 	@Override
-	public AdminDetails getAdminDetails(int PlaceId) {
+	public AdminDetails getAdminDetails(long PlaceId) {
 		return repo.findById(PlaceId);
 	}
 
 	@Override
-	public AdminDetails findById(int PlaceId) {
+	public AdminDetails findById(long PlaceId) {
 		return repo.findById(PlaceId);
 	}
 
 	@Override
-	public void DeleteAdminDetails(int PlaceId) {
+	public void DeleteAdminDetails(long PlaceId) {
 		repo.deleteById(PlaceId);
 		
 	}
@@ -45,7 +45,7 @@ public class ServiceClass implements ClassInterface {
 	}
 
 	@Override
-	public void updateBike(int PlaceId, AdminDetails Adetails) {
+	public void updateBike(long PlaceId, AdminDetails Adetails) {
 		Optional<AdminDetails>AdminById  = Optional.of(repo.findById(PlaceId));
 //		int AdminById = repo.findById(PlaceId);
 		AdminDetails AdminUpdate = AdminById.get();
@@ -56,7 +56,7 @@ public class ServiceClass implements ClassInterface {
 	}
 
 	@Override
-	public void updateCar(int PlaceId, AdminDetails Addetails) {
+	public void updateCar(long PlaceId, AdminDetails Addetails) {
 		Optional<AdminDetails>AdminById  = Optional.of(repo.findById(PlaceId));
 //		int AdminById = repo.findById(PlaceId);
 		AdminDetails AdminUpdated = AdminById.get();
@@ -65,6 +65,18 @@ public class ServiceClass implements ClassInterface {
 	
 		
 	}
+
+//	@Override
+//	public void updateBike(long PlaceId, AdminDetails Adetails) {
+//		// TODO Auto-generated method stub
+//		
+//	}
+//
+//	@Override
+//	public void updateCar(long PlaceId, AdminDetails Addetails) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 
 
 	

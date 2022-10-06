@@ -9,8 +9,8 @@ import com.AdminBooking.BookingAdmin.Entity.AdminDetails;
 
 
 @Repository
-public interface DAOLayer extends MongoRepository<AdminDetails, Integer> {
+public interface DAOLayer extends MongoRepository<AdminDetails, Long> {
 	
-	AdminDetails findById(int placeId);
+	AdminDetails findById(long placeId);
 
 }
