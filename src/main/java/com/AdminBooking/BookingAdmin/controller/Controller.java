@@ -44,13 +44,13 @@ public class Controller {
 	}
 	
 //	@RequestMapping(value = "/UpdateBike/{PlaceId}/BPlacesLeft/{BikeSpace}" , method = RequestMethod.PUT , produces = {""})
-	@PutMapping("/UpdateBike/{PlaceId}/BPlacesLeft/{BikeSpace}")
+	@PutMapping("/UpdateBike/{PlaceId}")
 	public ResponseEntity<?>updateBike(@PathVariable int PlaceId, @RequestBody AdminDetails Adetails){
 		
 		services.updateBike(PlaceId , Adetails);
 		return new ResponseEntity<>("Bike Space Updated " + PlaceId +" ",HttpStatus.OK);
 	}
-	@PutMapping("/UpdateCar/{PlaceId}/CPlacesLeft/{CarSpace}")
+	@PutMapping("/UpdateCar/{PlaceId}")
 	public ResponseEntity<?>updateCar(@PathVariable int PlaceId, @RequestBody AdminDetails Addetails){
 		
 		services.updateCar(PlaceId , Addetails);
