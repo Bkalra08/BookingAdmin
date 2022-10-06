@@ -43,6 +43,20 @@ public class Controller {
 		return this.services.getAllAdminDetails();
 	}
 	
+//	@RequestMapping(value = "/UpdateBike/{PlaceId}/BPlacesLeft/{BikeSpace}" , method = RequestMethod.PUT , produces = {""})
+	@PutMapping("/UpdateBike/{PlaceId}/BPlacesLeft/{BikeSpace}")
+	public ResponseEntity<?>updateBike(@PathVariable int PlaceId, @RequestBody AdminDetails Adetails){
+		
+		services.updateBike(PlaceId , Adetails);
+		return new ResponseEntity<>("Bike Space Updated " + PlaceId +" ",HttpStatus.OK);
+	}
+	@PutMapping("/UpdateCar/{PlaceId}/CPlacesLeft/{CarSpace}")
+	public ResponseEntity<?>updateCar(@PathVariable int PlaceId, @RequestBody AdminDetails Addetails){
+		
+		services.updateCar(PlaceId , Addetails);
+		return new ResponseEntity<>("Car Space Updated " + PlaceId +" ",HttpStatus.OK);
+	}
+	
 	
 	
 }

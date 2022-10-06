@@ -1,6 +1,7 @@
 package com.AdminBooking.BookingAdmin.Services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,27 @@ public class ServiceClass implements ClassInterface {
 		return repo.findAll();
 	}
 
+	@Override
+	public void updateBike(int PlaceId, AdminDetails Adetails) {
+		Optional<AdminDetails>AdminById  = Optional.of(repo.findById(PlaceId));
+//		int AdminById = repo.findById(PlaceId);
+		AdminDetails AdminUpdate = AdminById.get();
+		AdminUpdate.setBikeSpace(Adetails.getBikeSpace());
+		repo.save(AdminUpdate);
+	
+		
+	}
+
+	@Override
+	public void updateCar(int PlaceId, AdminDetails Addetails) {
+		Optional<AdminDetails>AdminById  = Optional.of(repo.findById(PlaceId));
+//		int AdminById = repo.findById(PlaceId);
+		AdminDetails AdminUpdated = AdminById.get();
+		AdminUpdated.setCarSpace(Addetails.getCarSpace());
+		repo.save(AdminUpdated);
+	
+		
+	}
 
 
 	

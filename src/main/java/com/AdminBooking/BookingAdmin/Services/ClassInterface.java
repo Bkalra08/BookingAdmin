@@ -10,5 +10,7 @@ public interface ClassInterface {
 	public AdminDetails findById(int PlaceId);
 	void DeleteAdminDetails (int PlaceId);
 	public List<AdminDetails> getAllAdminDetails();
+	public void updateBike(int PlaceId , AdminDetails Adetails);
+	public void updateCar(int PlaceId , AdminDetails Addetails);
 
 }
