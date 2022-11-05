@@ -27,5 +27,6 @@ public class AdminDetails {
 	private String ParkingManager;
 	private String ParkingPhNo;
 	private String ParkingLot;
+	private boolean IsVerified; 
 
 }
