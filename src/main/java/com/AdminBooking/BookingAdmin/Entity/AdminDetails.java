@@ -28,4 +28,5 @@ public class AdminDetails {
 	private boolean IsVerified;
 	private PhotoDetails details;
 	
+	
 }

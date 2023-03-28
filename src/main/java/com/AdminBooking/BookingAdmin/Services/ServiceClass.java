@@ -45,8 +45,8 @@ public class ServiceClass implements ClassInterface {
 	}
 
 	@Override
-	public void updateBike(long PlaceId, AdminDetails Adetails) {
-		Optional<AdminDetails>AdminById  = Optional.of(repo.findById(PlaceId));
+	public void updateBike(long ownerId, AdminDetails Adetails) {
+		Optional<AdminDetails>AdminById  = Optional.of(repo.findById(ownerId));
 //		int AdminById = repo.findById(PlaceId);
 		AdminDetails AdminUpdate = AdminById.get();
 		AdminUpdate.setBikeSpace(Adetails.getBikeSpace());
@@ -56,11 +56,21 @@ public class ServiceClass implements ClassInterface {
 	}
 
 	@Override
-	public void updateCar(long PlaceId, AdminDetails Addetails) {
-		Optional<AdminDetails>AdminById  = Optional.of(repo.findById(PlaceId));
+	public void updateCar(long ownerId, AdminDetails Addetails) {
+		Optional<AdminDetails>AdminById  = Optional.of(repo.findById(ownerId));
 //		int AdminById = repo.findById(PlaceId);
 		AdminDetails AdminUpdated = AdminById.get();
 		AdminUpdated.setCarSpace(Addetails.getCarSpace());
+		repo.save(AdminUpdated);
+	
+		
+	}
+
+	public void updatephoto(long ownerId, AdminDetails incdetails) {
+		Optional<AdminDetails>AdminById  = Optional.of(repo.findById(ownerId));
+//		int AdminById = repo.findById(PlaceId);
+		AdminDetails AdminUpdated = AdminById.get();
+		AdminUpdated.setDetails(incdetails.getDetails());
 		repo.save(AdminUpdated);
 	
 		

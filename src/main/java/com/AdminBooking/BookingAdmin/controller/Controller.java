@@ -58,6 +58,12 @@ public class Controller {
 		services.updateCar(ownerId , Addetails);
 		return new ResponseEntity<>("Car Space Updated " + ownerId +" ",HttpStatus.OK);
 	}
+	@PutMapping("/updatePhoto/{ownerId}")
+	public ResponseEntity<?>updatephoto(@PathVariable long ownerId, @RequestBody AdminDetails incdetails){
+		
+		services.updatephoto(ownerId , incdetails);
+		return new ResponseEntity<>("photo uploaded " + ownerId +" ",HttpStatus.OK);
+	}
 	
 	
 	
