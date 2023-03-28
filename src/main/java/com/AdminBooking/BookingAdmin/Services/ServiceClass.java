@@ -24,18 +24,18 @@ public class ServiceClass implements ClassInterface {
 	}
 
 	@Override
-	public AdminDetails getAdminDetails(long PlaceId) {
-		return repo.findById(PlaceId);
+	public AdminDetails getAdminDetails(String ownerId) {
+		return repo.findById(ownerId).orElseThrow(() -> new RuntimeException("AdminDetails not found"));
 	}
 
 	@Override
-	public AdminDetails findById(long PlaceId) {
-		return repo.findById(PlaceId);
+	public AdminDetails findById(String ownerId) {
+		return repo.findById(ownerId).orElseThrow(() -> new RuntimeException("AdminDetails not found"));
 	}
 
 	@Override
-	public void DeleteAdminDetails(long PlaceId) {
-		repo.deleteById(PlaceId);
+	public void DeleteAdminDetails(String ownerId) {
+		repo.deleteById(ownerId);
 		
 	}
 
@@ -45,8 +45,8 @@ public class ServiceClass implements ClassInterface {
 	}
 
 	@Override
-	public void updateBike(long ownerId, AdminDetails Adetails) {
-		Optional<AdminDetails>AdminById  = Optional.of(repo.findById(ownerId));
+	public void updateBike(String ownerId, AdminDetails Adetails) {
+		Optional<AdminDetails>AdminById  = Optional.of(repo.findById(ownerId)).orElseThrow(() -> new RuntimeException("AdminDetails not found"));
 //		int AdminById = repo.findById(PlaceId);
 		AdminDetails AdminUpdate = AdminById.get();
 		AdminUpdate.setBikeSpace(Adetails.getBikeSpace());
@@ -56,8 +56,8 @@ public class ServiceClass implements ClassInterface {
 	}
 
 	@Override
-	public void updateCar(long ownerId, AdminDetails Addetails) {
-		Optional<AdminDetails>AdminById  = Optional.of(repo.findById(ownerId));
+	public void updateCar(String ownerId, AdminDetails Addetails) {
+		Optional<AdminDetails>AdminById  = Optional.of(repo.findById(ownerId)).orElseThrow(() -> new RuntimeException("AdminDetails not found"));
 //		int AdminById = repo.findById(PlaceId);
 		AdminDetails AdminUpdated = AdminById.get();
 		AdminUpdated.setCarSpace(Addetails.getCarSpace());
@@ -66,8 +66,8 @@ public class ServiceClass implements ClassInterface {
 		
 	}
 
-	public void updatephoto(long ownerId, AdminDetails incdetails) {
-		Optional<AdminDetails>AdminById  = Optional.of(repo.findById(ownerId));
+	public void updatephoto(String ownerId, AdminDetails incdetails) {
+		Optional<AdminDetails>AdminById  = Optional.of(repo.findById(ownerId)).orElseThrow(() -> new RuntimeException("AdminDetails not found"));
 //		int AdminById = repo.findById(PlaceId);
 		AdminDetails AdminUpdated = AdminById.get();
 		AdminUpdated.setDetails(incdetails.getDetails());

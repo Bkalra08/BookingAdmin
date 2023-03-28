@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class AdminDetails {
 	
 	@Id
-	private long ownerId;
+	private String ownerId;
 	private String fname;
 	private String lname;
 	private int bikeSpace;

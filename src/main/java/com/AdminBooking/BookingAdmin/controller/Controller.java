@@ -34,10 +34,10 @@ public class Controller {
 	}
 	@GetMapping("/GetAdminDetails/{ownerId}")
 	public AdminDetails getAdminDetails(@PathVariable String ownerId) {
-		return this.services.getAdminDetails(Long.parseLong(ownerId));
+		return this.services.getAdminDetails(ownerId);
 	}
 	@DeleteMapping("/DeleteAdminDetails/{ownerId}")
-	public ResponseEntity<?>DeleteData(@PathVariable long ownerId){
+	public ResponseEntity<?>DeleteData(@PathVariable String ownerId){
 		services.DeleteAdminDetails(services.findById(ownerId).getOwnerId());
 		return new ResponseEntity("DATA DELETED SUCCESSFULLY" , HttpStatus.OK);
 	}
@@ -47,19 +47,19 @@ public class Controller {
 	}
 	
 	@PutMapping("/UpdateBike/{ownerId}")
-	public ResponseEntity<?>updateBike(@PathVariable long ownerId, @RequestBody AdminDetails Adetails){
+	public ResponseEntity<?>updateBike(@PathVariable String ownerId, @RequestBody AdminDetails Adetails){
 		
 		services.updateBike(ownerId , Adetails);
 		return new ResponseEntity<>("Bike Space Updated " + ownerId +" ",HttpStatus.OK);
 	}
 	@PutMapping("/UpdateCar/{ownerId}")
-	public ResponseEntity<?>updateCar(@PathVariable long ownerId, @RequestBody AdminDetails Addetails){
+	public ResponseEntity<?>updateCar(@PathVariable String ownerId, @RequestBody AdminDetails Addetails){
 		
 		services.updateCar(ownerId , Addetails);
 		return new ResponseEntity<>("Car Space Updated " + ownerId +" ",HttpStatus.OK);
 	}
 	@PutMapping("/updatePhoto/{ownerId}")
-	public ResponseEntity<?>updatephoto(@PathVariable long ownerId, @RequestBody AdminDetails incdetails){
+	public ResponseEntity<?>updatephoto(@PathVariable String ownerId, @RequestBody AdminDetails incdetails){
 		
 		services.updatephoto(ownerId , incdetails);
 		return new ResponseEntity<>("photo uploaded " + ownerId +" ",HttpStatus.OK);
