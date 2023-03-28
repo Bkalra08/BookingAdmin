@@ -12,5 +12,6 @@ public interface ClassInterface {
 	public List<AdminDetails> getAllAdminDetails();
 	public void updateBike(String ownerId , AdminDetails Adetails);
 	public void updateCar(String ownerId , AdminDetails Addetails);
+	public void updatephoto(String ownerId ,AdminDetails incdetails);
 
 }

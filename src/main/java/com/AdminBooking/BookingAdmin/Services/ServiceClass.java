@@ -47,7 +47,6 @@ public class ServiceClass implements ClassInterface {
 	@Override
 	public void updateBike(String ownerId, AdminDetails Adetails) {
 		Optional<AdminDetails>AdminById  = Optional.of(repo.findById(ownerId)).orElseThrow(() -> new RuntimeException("AdminDetails not found"));
-//		int AdminById = repo.findById(PlaceId);
 		AdminDetails AdminUpdate = AdminById.get();
 		AdminUpdate.setBikeSpace(Adetails.getBikeSpace());
 		repo.save(AdminUpdate);
@@ -58,7 +57,6 @@ public class ServiceClass implements ClassInterface {
 	@Override
 	public void updateCar(String ownerId, AdminDetails Addetails) {
 		Optional<AdminDetails>AdminById  = Optional.of(repo.findById(ownerId)).orElseThrow(() -> new RuntimeException("AdminDetails not found"));
-//		int AdminById = repo.findById(PlaceId);
 		AdminDetails AdminUpdated = AdminById.get();
 		AdminUpdated.setCarSpace(Addetails.getCarSpace());
 		repo.save(AdminUpdated);
@@ -68,7 +66,6 @@ public class ServiceClass implements ClassInterface {
 
 	public void updatephoto(String ownerId, AdminDetails incdetails) {
 		Optional<AdminDetails>AdminById  = Optional.of(repo.findById(ownerId)).orElseThrow(() -> new RuntimeException("AdminDetails not found"));
-//		int AdminById = repo.findById(PlaceId);
 		AdminDetails AdminUpdated = AdminById.get();
 		AdminUpdated.setDetails(incdetails.getDetails());
 		repo.save(AdminUpdated);
