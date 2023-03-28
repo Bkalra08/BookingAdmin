@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.AdminBooking.BookingAdmin.DAOlayer.DAOLayer;
 import com.AdminBooking.BookingAdmin.Entity.AdminDetails;
 import com.AdminBooking.BookingAdmin.Services.ServiceClass;
 
@@ -24,18 +25,20 @@ import com.AdminBooking.BookingAdmin.Services.ServiceClass;
 public class Controller {
 	@Autowired
 	private ServiceClass services;
+//	@Autowired 
+////	private DAOLayer dlayer;
 	
 	@PostMapping("/AddAdminData")
 	public AdminDetails AddAdminData(@RequestBody AdminDetails details) {
 		return this.services.AddAdminData(details);
 	}
-	@GetMapping("/GetAdminDetails/{PlaceId}")
-	public AdminDetails getAdminDetails(@PathVariable String PlaceId) {
-		return this.services.getAdminDetails(Long.parseLong(PlaceId));
+	@GetMapping("/GetAdminDetails/{ownerId}")
+	public AdminDetails getAdminDetails(@PathVariable String ownerId) {
+		return this.services.getAdminDetails(Long.parseLong(ownerId));
 	}
-	@DeleteMapping("/DeleteAdminDetails/{PlaceId}")
-	public ResponseEntity<?>DeleteData(@PathVariable long PlaceId){
-		services.DeleteAdminDetails(services.findById(PlaceId).getPlaceId());
+	@DeleteMapping("/DeleteAdminDetails/{ownerId}")
+	public ResponseEntity<?>DeleteData(@PathVariable long ownerId){
+		services.DeleteAdminDetails(services.findById(ownerId).getOwnerId());
 		return new ResponseEntity("DATA DELETED SUCCESSFULLY" , HttpStatus.OK);
 	}
 	@GetMapping("/GetAllAdminDetails")
@@ -43,18 +46,17 @@ public class Controller {
 		return this.services.getAllAdminDetails();
 	}
 	
-//	@RequestMapping(value = "/UpdateBike/{PlaceId}/BPlacesLeft/{BikeSpace}" , method = RequestMethod.PUT , produces = {""})
-	@PutMapping("/UpdateBike/{PlaceId}")
-	public ResponseEntity<?>updateBike(@PathVariable long PlaceId, @RequestBody AdminDetails Adetails){
+	@PutMapping("/UpdateBike/{ownerId}")
+	public ResponseEntity<?>updateBike(@PathVariable long ownerId, @RequestBody AdminDetails Adetails){
 		
-		services.updateBike(PlaceId , Adetails);
-		return new ResponseEntity<>("Bike Space Updated " + PlaceId +" ",HttpStatus.OK);
+		services.updateBike(ownerId , Adetails);
+		return new ResponseEntity<>("Bike Space Updated " + ownerId +" ",HttpStatus.OK);
 	}
-	@PutMapping("/UpdateCar/{PlaceId}")
-	public ResponseEntity<?>updateCar(@PathVariable long PlaceId, @RequestBody AdminDetails Addetails){
+	@PutMapping("/UpdateCar/{ownerId}")
+	public ResponseEntity<?>updateCar(@PathVariable long ownerId, @RequestBody AdminDetails Addetails){
 		
-		services.updateCar(PlaceId , Addetails);
-		return new ResponseEntity<>("Car Space Updated " + PlaceId +" ",HttpStatus.OK);
+		services.updateCar(ownerId , Addetails);
+		return new ResponseEntity<>("Car Space Updated " + ownerId +" ",HttpStatus.OK);
 	}
 	
 	

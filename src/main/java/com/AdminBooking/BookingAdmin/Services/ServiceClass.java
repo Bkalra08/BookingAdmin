@@ -66,6 +66,7 @@ public class ServiceClass implements ClassInterface {
 		
 	}
 
+
 //	@Override
 //	public void updateBike(long PlaceId, AdminDetails Adetails) {
 //		// TODO Auto-generated method stub

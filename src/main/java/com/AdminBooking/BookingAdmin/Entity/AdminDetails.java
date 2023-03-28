@@ -16,17 +16,16 @@ import lombok.NoArgsConstructor;
 public class AdminDetails {
 	
 	@Id
-	private long placeId;
-	private String Address;
-	private String fnameofowner;
-	private String lnameofowner;
-	private String Email;
-	private String Password;
-	private int BikeSpace;
-	private int CarSpace;
-	private String ParkingManager;
-	private String ParkingPhNo;
-	private String ParkingLot;
-	private boolean IsVerified; 
-
+	private long ownerId;
+	private String fname;
+	private String lname;
+	private int bikeSpace;
+	private int carSpace;
+	private String pManager;
+	private String pPhNo;
+	private String pLotName;
+	private String paddress;
+	private boolean IsVerified;
+	private PhotoDetails details;
+	
 }
