@@ -14,19 +14,11 @@ import lombok.NoArgsConstructor;
 
 
 public class AdminDetails {
-	
+
 	@Id
 	private String ownerId;
-	private String fname;
-	private String lname;
-	private int bikeSpace;
-	private int carSpace;
-	private String pManager;
-	private String pPhNo;
-	private String pLotName;
-	private String paddress;
-	private boolean IsVerified;
+	private Owner ownerdetails;
 	private PhotoDetails details;
-	
+	private ticketsCollection tickets;
 	
 }

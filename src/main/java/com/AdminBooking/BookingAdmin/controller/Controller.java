@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.AdminBooking.BookingAdmin.DAOlayer.DAOLayer;
 import com.AdminBooking.BookingAdmin.Entity.AdminDetails;
+import com.AdminBooking.BookingAdmin.Entity.Owner;
 import com.AdminBooking.BookingAdmin.Services.ServiceClass;
 
 @RestController
@@ -25,8 +26,12 @@ import com.AdminBooking.BookingAdmin.Services.ServiceClass;
 public class Controller {
 	@Autowired
 	private ServiceClass services;
+	
 //	@Autowired 
 ////	private DAOLayer dlayer;
+	
+	
+	
 	
 	@PostMapping("/AddAdminData")
 	public AdminDetails AddAdminData(@RequestBody AdminDetails details) {
@@ -36,14 +41,18 @@ public class Controller {
 	public AdminDetails getAdminDetails(@PathVariable String ownerId) {
 		return this.services.getAdminDetails(ownerId);
 	}
+	@GetMapping("/GetAllAdminDetails")
+	public List<AdminDetails>GetallDetails(){
+		return this.services.getAllAdminDetails();
+	}
 	@DeleteMapping("/DeleteAdminDetails/{ownerId}")
 	public ResponseEntity<?>DeleteData(@PathVariable String ownerId){
 		services.DeleteAdminDetails(services.findById(ownerId).getOwnerId());
 		return new ResponseEntity("DATA DELETED SUCCESSFULLY" , HttpStatus.OK);
 	}
-	@GetMapping("/GetAllAdminDetails")
-	public List<AdminDetails>GetallDetails(){
-		return this.services.getAllAdminDetails();
+	@GetMapping("/GetAllAdminDetailsNoImage")
+	public List<AdminDetails>getAllAdminDetailsNoImage(){
+		return this.services.getAllAdminDetailsNoImage();
 	}
 	
 	@PutMapping("/UpdateBike/{ownerId}")

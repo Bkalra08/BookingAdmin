@@ -8,12 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.AdminBooking.BookingAdmin.DAOlayer.DAOLayer;
 import com.AdminBooking.BookingAdmin.Entity.AdminDetails;
-
-
+import com.AdminBooking.BookingAdmin.Entity.Owner;
 
 @Service
 public class ServiceClass implements ClassInterface {
-	
+
 	@Autowired
 	private DAOLayer repo;
 
@@ -25,7 +24,25 @@ public class ServiceClass implements ClassInterface {
 
 	@Override
 	public AdminDetails getAdminDetails(String ownerId) {
-		return repo.findById(ownerId).orElseThrow(() -> new RuntimeException("AdminDetails not found"));
+		AdminDetails adminDetails = repo.findById(ownerId)
+				.orElseThrow(() -> new RuntimeException("AdminDetails not found"));
+		AdminDetails updatedAdminDetails = new AdminDetails();
+		updatedAdminDetails.setOwnerId(adminDetails.getOwnerId());
+		updatedAdminDetails.setOwnerdetails(adminDetails.getOwnerdetails());
+
+		return updatedAdminDetails;
+	}
+
+	@Override
+	public List<AdminDetails> getAllAdminDetailsNoImage() {
+		List<AdminDetails> allAdminDetails = repo.findAll();
+
+		for (AdminDetails adminDetails : allAdminDetails) {
+			Owner ownerDetails = adminDetails.getOwnerdetails();
+			adminDetails.setDetails(null); // Set PhotoDetails to null
+		}
+
+		return allAdminDetails;
 	}
 
 	@Override
@@ -36,7 +53,6 @@ public class ServiceClass implements ClassInterface {
 	@Override
 	public void DeleteAdminDetails(String ownerId) {
 		repo.deleteById(ownerId);
-		
 	}
 
 	@Override
@@ -46,47 +62,35 @@ public class ServiceClass implements ClassInterface {
 
 	@Override
 	public void updateBike(String ownerId, AdminDetails Adetails) {
-		Optional<AdminDetails>AdminById  = Optional.of(repo.findById(ownerId)).orElseThrow(() -> new RuntimeException("AdminDetails not found"));
-		AdminDetails AdminUpdate = AdminById.get();
-		AdminUpdate.setBikeSpace(Adetails.getBikeSpace());
-		repo.save(AdminUpdate);
-	
-		
+		Optional<AdminDetails> adminById = repo.findById(ownerId);
+		if (adminById.isPresent()) {
+			AdminDetails adminUpdate = adminById.get();
+			Owner ownerDetails = adminUpdate.getOwnerdetails();
+			ownerDetails.setBikeSpace(Adetails.getOwnerdetails().getBikeSpace());
+			repo.save(adminUpdate);
+		} else {
+			throw new RuntimeException("AdminDetails not found");
+		}
 	}
 
 	@Override
 	public void updateCar(String ownerId, AdminDetails Addetails) {
-		Optional<AdminDetails>AdminById  = Optional.of(repo.findById(ownerId)).orElseThrow(() -> new RuntimeException("AdminDetails not found"));
-		AdminDetails AdminUpdated = AdminById.get();
-		AdminUpdated.setCarSpace(Addetails.getCarSpace());
-		repo.save(AdminUpdated);
-	
-		
+		Optional<AdminDetails> adminById = repo.findById(ownerId);
+		if (adminById.isPresent()) {
+			AdminDetails adminUpdated = adminById.get();
+			Owner ownerDetails = adminUpdated.getOwnerdetails();
+			ownerDetails.setCarSpace(Addetails.getOwnerdetails().getCarSpace());
+			repo.save(adminUpdated);
+		} else {
+			throw new RuntimeException("AdminDetails not found");
+		}
 	}
 
 	public void updatephoto(String ownerId, AdminDetails incdetails) {
-		Optional<AdminDetails>AdminById  = Optional.of(repo.findById(ownerId)).orElseThrow(() -> new RuntimeException("AdminDetails not found"));
+		Optional<AdminDetails> AdminById = Optional.of(repo.findById(ownerId))
+				.orElseThrow(() -> new RuntimeException("AdminDetails not found"));
 		AdminDetails AdminUpdated = AdminById.get();
 		AdminUpdated.setDetails(incdetails.getDetails());
 		repo.save(AdminUpdated);
-	
-		
 	}
-
-
-//	@Override
-//	public void updateBike(long PlaceId, AdminDetails Adetails) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//	@Override
-//	public void updateCar(long PlaceId, AdminDetails Addetails) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-
-
-	
-
 }
